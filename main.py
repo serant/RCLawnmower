@@ -7,13 +7,13 @@ import threading
 
 def move(pos):
     if pos.top:
-        sendCommand('T,' + pos.distance)
+        sendCommand('T,' + str(pos.distance))
     elif pos.bottom:
-        sendCommand('B,' + pos.distance)
+        sendCommand('B,' + str(pos.distance))
     elif pos.left:
-        sendCommand('L,' + pos.distance)
+        sendCommand('L,' + str(pos.distance))
     elif pos.right:
-        sendCommand('R,' + pos.distance)
+        sendCommand('R,' + str(pos.distance))
 
 def stop():
     sendCommand('S')
@@ -28,7 +28,7 @@ def readMessageLoop(ser):
         handleMessage(message)
 
 def handleMessage(message):
-    logging.debug(message)
+    logging.info(message)
 
 # First find arduino (ACM0 type)
 devices = list(list_ports.comports())
