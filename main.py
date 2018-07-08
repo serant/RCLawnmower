@@ -5,6 +5,31 @@ import serial
 import logging
 import threading 
 
+def move(pos):
+    if pos.top:
+        sendCommand('T,' + pos.distance)
+    elif pos.bottom:
+        sendCommand('B,' + pos.distance)
+    elif pos.left:
+        sendCommand('L,' + pos.distance)
+    elif pos.right:
+        sendCommand('R,' + pos.distance)
+
+def stop():
+    sendCommand('S')
+
+def sendCommand(command): 
+    logging.info('Sent: ' + command)
+    return ser.write((command + '\r\n').encode())
+
+def readMessageLoop(ser):
+    while True:
+        message = ser.readline().decode()
+        handleMessage(message)
+
+def handleMessage(message):
+    logging.debug(message)
+
 # First find arduino (ACM0 type)
 devices = list(list_ports.comports())
 arduinoPort = ''
@@ -25,33 +50,8 @@ readThread = threading.Thread(target=readMessageLoop, args=(ser,))
 
 bd = BlueDot()
 
-def move(pos):
-    if pos.top:
-        sendCommand('T,' + pos.distance)
-    elif pos.bottom:
-        sendCommand('B,' + pos.distance)
-    elif pos.left:
-        sendCommand('L,' + pos.distance)
-    elif pos.right:
-        sendCommand('R,' + pos.distance)
-
-def stop():
-    sendCommand('S')
-
 bd.when_pressed = move
 bd.when_moved = move
 bd.when_released = stop
-
-def sendCommand(command): 
-    logging.info('Sent: ' + command)
-    return ser.write((command + '\r\n').encode())
-
-def readMessageLoop(ser):
-    while True:
-        message = ser.readline().decode()
-        handleMessage(message)
-
-def handleMessage(message):
-    logging.debug(message)
 
 pause()
