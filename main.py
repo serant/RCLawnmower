@@ -24,7 +24,7 @@ def sendCommand(command):
 
 def readMessageLoop(ser):
     while True:
-        message = ser.readline().decode()
+        message = ser.readline().decode().rstrip()
         handleMessage(message)
 
 def handleMessage(message):
