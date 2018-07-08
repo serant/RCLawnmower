@@ -30,8 +30,18 @@ def readMessageLoop(ser):
 def handleMessage(message):
     logger.debug(message)
 
-logger = logging.getLogger()
+logger = logging.getLogger('blade-main')
 logger.setLevel(logging.DEBUG)
+
+# Create console handler and set level to debug
+console = logging.StreamHandler()
+console.setLevel(logging.DEBUG)
+
+# Create formatter and add to console 
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console.setFormatter(formatter)
+logger.addHandler(console)
+
 # First find arduino (ACM0 type)
 devices = list(list_ports.comports())
 arduinoPort = ''
@@ -49,6 +59,7 @@ ser = serial.Serial(arduinoPort, 9600)
 
 # Beginng reading Daemon
 readThread = threading.Thread(target=readMessageLoop, args=(ser,))
+readThread.start()
 
 bd = BlueDot()
 
