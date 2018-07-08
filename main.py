@@ -19,7 +19,7 @@ def stop():
     sendCommand('S')
 
 def sendCommand(command): 
-    logging.info('Sent: ' + command)
+    logger.info('Sent: ' + command)
     return ser.write((command + '\r\n').encode())
 
 def readMessageLoop(ser):
@@ -28,8 +28,10 @@ def readMessageLoop(ser):
         handleMessage(message)
 
 def handleMessage(message):
-    logging.info(message)
+    logger.debug(message)
 
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 # First find arduino (ACM0 type)
 devices = list(list_ports.comports())
 arduinoPort = ''
@@ -41,7 +43,7 @@ for port in devices:
 if not arduinoPort:
     raise serial.SerialException('Cannot find port to connect to')
 
-logging.info('Found device at: ' + arduinoPort)
+logger.info('Found device at: ' + arduinoPort)
  
 ser = serial.Serial(arduinoPort, 9600)
 
