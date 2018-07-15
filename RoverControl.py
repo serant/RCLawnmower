@@ -31,7 +31,7 @@ class RoverControl(object):
             self.previousInput['R'] = distance
             return self.__sendCommand('R,' + str(distance))
 
-    def stop(self):
+    def stop(self, pos):
         return self.__sendCommand('S')
 
     def __initalizeLogging(self):
