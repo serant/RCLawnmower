@@ -9,6 +9,7 @@ class RoverControl(object):
     def __init__(self):
         self.previousInput = { 'T': 0, 'B': 0, 'L': 0, 'R': 0, }
         self.__initalizeLogging()
+        self.__initReadMessageLoop()
         self.__initBlueDot()
         pause()
 
