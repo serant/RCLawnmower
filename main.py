@@ -8,13 +8,13 @@ import time
 
 def move(pos):
     if pos.top:
-        sendCommand('T,' + str(pos.distance))
+        sendCommand('T,' + str(round(pos.distance, 4)))
     elif pos.bottom:
-        sendCommand('B,' + str(pos.distance))
+        sendCommand('B,' + str(round(pos.distance, 4)))
     elif pos.left:
-        sendCommand('L,' + str(pos.distance))
+        sendCommand('L,' + str(round(pos.distance, 4)))
     elif pos.right:
-        sendCommand('R,' + str(pos.distance))
+        sendCommand('R,' + str(round(pos.distance, 4)))
 
 def stop():
     sendCommand('S')
