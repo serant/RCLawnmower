@@ -4,6 +4,7 @@ from serial.tools import list_ports
 import serial
 import logging
 import threading 
+import time
 
 def move(pos):
     if pos.top:
