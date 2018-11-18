@@ -33,5 +33,5 @@ python3.6 ./main.py
 
 ## Authors
 
-* **Seran Thirugnanam** - Product design, engineering
-* **Hamza Qureshi** - Product design, marketing 
+* **Seran Thirugnanam** - engineering
+* **Hamza Qureshi** - marketing 
