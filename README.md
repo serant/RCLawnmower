@@ -27,9 +27,9 @@ python3.6 ./main.py
 
 ## Built With
 * [Blue Dot App](https://play.google.com/store/apps/details?id=com.stuffaboutcode.bluedot&hl=en_CA) - Used as a Bluetooth remote
-* [Raspberry Pi 3]() - Used for main process
-* [Arduino Uno R3]() - Used to mock an RC receiver and uses PWM to control the Sabertooth motor controller
-* [Sabertooth RC]() - Used to control two 24V high torque motors
+* [Raspberry Pi 3](https://www.raspberrypi.org) - Used for main process
+* [Arduino Uno R3](arduino.cc/download) - Used to mock an RC receiver and uses PWM to control the Sabertooth motor controller
+* [Sabertooth RC](https://www.dimensionengineering.com/products/sabertooth2x12rc) - Used to control two 24V high torque motors
 
 ## Authors
 
